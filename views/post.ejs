@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 text-white">
+
+  <div class="w-full min-h-screen p-10 relative">
+
+    <!-- Logout Button -->
+    <a href="/logout" 
+       class="absolute top-5 right-5 px-4 py-2 bg-red-500 hover:bg-red-400 rounded-lg text-sm">
+      Logout
+    </a>
+
+    <!-- Greeting -->
+    <h1 class="text-2xl mb-1">
+      Hello, <span class="font-semibold"><%= user.name %></span> 👋🏻
+    </h1>
+    <p class="text-zinc-400 mb-6">you can create a new post.</p>
+
+    <!-- Create Post -->
+    <form action="/post" method="POST" class="mb-10 max-w-xl">
+      <textarea 
+        name="content"
+        placeholder="What's on your mind?"
+        class="w-full p-4 bg-zinc-800 border border-zinc-700 rounded-lg outline-none resize-none h-24 mb-3"
+      ></textarea>
+
+      <button 
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm">
+        Create New Post
+      </button>
+    </form>
+
+    <!-- Posts Section -->
+    <h2 class="text-sm text-zinc-400 mb-4">Your Posts.</h2>
+     
+    <div class="flex flex-col gap-4 max-w-xl">
+            <% if(posts.length>0){ %>
+            <% posts.reverse().forEach((post)=>{ %>
+                <div class="bg-zinc-800 p-4 rounded-lg border border-zinc-700">
+                    
+                    <!-- Username -->
+                    <p class="text-blue-400 text-sm mb-2">
+                    @<%= post.user.username%>
+                    </p>
+
+                    <!-- Content -->
+                    <p class="text-sm text-zinc-300 mb-3">
+                     <%= post.content %>
+                    </p>
+
+                    <!-- Actions -->
+                    <small class = "mb-2"><%= post.likes.length%> Likes</small>    
+                    <div class="flex gap-4 text-sm">
+                    <a href="/like/<%= post._id %>/<%= user._id %>" class="text-blue-400 hover:underline">
+                       <%= post.likes.indexOf(user._id) === -1? "Like" : "Unlike" %>
+                    </a>
+                    <a href="#>" class="text-zinc-400 hover:underline">
+                        edit
+                    </a>
+                    </div>
+                </div>
+            <%  }) %> 
+        <% } %>
+    </div>
+  </div>
+
+</body>
+</html>

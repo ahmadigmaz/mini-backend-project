@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Create User</title>
+</head>
+<body>
+    <div class="w-full bg-zinc-900 p-10 text-white ">
+    <!-- <div class = "nav-mb-10">
+        <a href = "/readuser" class = "text-zinc-500">Users List</a>
+    </div>    -->
+    <h1 class="text-2xl mb-5 ">Login</h1>
+
+    <form  action = "/login" method = "post" class="flex flex-col gap-4 max-w-md">
+        <input 
+        type="text" 
+        name="username" 
+        placeholder="username"
+        class="px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 outline-none"
+        />
+        <input 
+        type="text" 
+        name="password" 
+        placeholder="password"
+        class="px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 outline-none"
+        />
+
+        <button 
+        class="px-5 py-2 bg-blue-600 rounded-lg"
+        >
+        Login
+        </button>
+    </form>
+    <div class = "nav-mb-10 my-2">
+        <a href = "/" class = "text-zinc-500">New User? Sign Up</a>
+    </div>   
+    </div>
+</body>
+</html>
